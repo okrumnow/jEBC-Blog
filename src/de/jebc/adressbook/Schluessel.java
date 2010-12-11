@@ -1,4 +1,4 @@
-package de.jebc.example2;
+package de.jebc.adressbook;
 
 public class Schluessel {
 

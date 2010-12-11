@@ -1,4 +1,4 @@
-package de.jebc.example2;
+package de.jebc.adressbook;
 
 import java.sql.ResultSet;
 
