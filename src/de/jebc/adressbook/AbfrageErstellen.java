@@ -1,8 +1,5 @@
 package de.jebc.adressbook;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import de.jebc.InPin;
 import de.jebc.OutPin;
 import de.jebc.OutPinImpl;
@@ -27,13 +24,9 @@ public class AbfrageErstellen {
         return outpin;
     }
 
-    private Logger logger = LoggerFactory.getLogger(AbfrageErstellen.class);
-
     private Abfrage create(Schluessel key) {
-        logger.info("erstelle Abfrage für {}", key.getId());
         Abfrage result = new Abfrage(String.format(
                 "SELECT * FROM Adressen WHERE id = %1$s", key.getId()));
-        logger.info("Abfrage ist: {}", result.getQuery());
         return result;
     }
 }
