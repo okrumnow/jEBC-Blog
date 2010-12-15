@@ -1,8 +1,5 @@
-package de.jebc.adressbook.log;
+package de.jebc;
 
-import de.jebc.InPin;
-import de.jebc.OutPin;
-import de.jebc.OutPinImpl;
 
 public abstract class Watcher<T> {
 

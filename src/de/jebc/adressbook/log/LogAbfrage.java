@@ -2,6 +2,7 @@ package de.jebc.adressbook.log;
 
 import org.slf4j.Logger;
 
+import de.jebc.Watcher;
 import de.jebc.adressbook.Abfrage;
 
 public class LogAbfrage extends Watcher<Abfrage> {
