@@ -7,7 +7,7 @@ import de.jebc.InPin;
 import de.jebc.OutPin;
 import de.jebc.Watcher;
 import de.jebc.adressbook.log.LogAbfrage;
-import de.jebc.adressbook.log.LogDebug;
+import de.jebc.log.LogDebug;
 
 public class AdresseEinlesen {
 

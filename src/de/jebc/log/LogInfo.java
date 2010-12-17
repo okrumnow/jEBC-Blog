@@ -1,4 +1,4 @@
-package de.jebc.adressbook.log;
+package de.jebc.log;
 
 import org.slf4j.Logger;
 
