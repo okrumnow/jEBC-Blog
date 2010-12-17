@@ -5,8 +5,9 @@ import org.slf4j.LoggerFactory;
 
 import de.jebc.InPin;
 import de.jebc.OutPin;
+import de.jebc.Watcher;
 import de.jebc.adressbook.log.LogAbfrage;
-import de.jebc.adressbook.log.LogSchluessel;
+import de.jebc.adressbook.log.LogDebug;
 
 public class AdresseEinlesen {
 
@@ -14,8 +15,6 @@ public class AdresseEinlesen {
     private AbfrageErstellen abfrageErstellen = new AbfrageErstellen();
     private DatenbankabfrageAusfuehren abfrageAusfuehren = new DatenbankabfrageAusfuehren();
     private AdressobjektErstellen adresseErstellen = new AdressobjektErstellen();
-    private LogSchluessel logSchluessel = new LogSchluessel(log);
-    private LogAbfrage logAbfrage = new LogAbfrage(log);
 
     public AdresseEinlesen() {
         logSchluessel.Out().wire(abfrageErstellen.Start());
@@ -31,4 +30,14 @@ public class AdresseEinlesen {
     public OutPin<Adresse> Result() {
         return adresseErstellen.Result();
     }
+
+    private Watcher<Schluessel> logSchluessel = new LogDebug<Schluessel>(log) {
+
+        @Override
+        protected String getMessage(Schluessel message) {
+            return "erstelle Abfrage für " + message.getId();
+        }
+    };
+    private Watcher<Abfrage> logAbfrage = new LogAbfrage(log);
+
 }
