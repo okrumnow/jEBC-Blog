@@ -5,20 +5,23 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import de.jebc.InPin;
+import de.jebc.addressbook.CreateQueryFromKey;
+import de.jebc.addressbook.Key;
+import de.jebc.addressbook.Query;
 
-public class TestAbfrageErstellen {
+public class TestCreateQuery {
 
     private String result;
 
     @Test
     public void ErstelltSelectStatement() {
-        Schluessel key = new Schluessel(1);
+        Key key = new Key(1);
 
-        AbfrageErstellen sut = new AbfrageErstellen();
-        sut.Result().wire(new InPin<Abfrage>() {
+        CreateQueryFromKey sut = new CreateQueryFromKey();
+        sut.Result().wire(new InPin<Query>() {
 
             @Override
-            public void receive(Abfrage message) {
+            public void receive(Query message) {
                 result = message.getQuery();
             }
         });

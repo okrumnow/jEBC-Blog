@@ -1,10 +1,10 @@
-package de.jebc.adressbook;
+package de.jebc.addressbook;
 
-public class Schluessel {
+public class Key {
 
     private final int id;
 
-    public Schluessel(int id) {
+    public Key(int id) {
         this.id = id;
     }
 

@@ -1,10 +1,10 @@
-package de.jebc.adressbook;
+package de.jebc.addressbook;
 
-public class Abfrage {
+public class Query {
 
     private final String query;
 
-    public Abfrage(String query) {
+    public Query(String query) {
         this.query = query;
     }
 
