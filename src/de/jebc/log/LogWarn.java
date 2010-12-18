@@ -14,7 +14,7 @@ public abstract class LogWarn<T> extends Log<T> {
     }
 
     @Override
-    protected boolean enabled() {
+    protected boolean isEnabled() {
         return log.isWarnEnabled();
     }
 

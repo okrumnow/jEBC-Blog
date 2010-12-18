@@ -14,7 +14,7 @@ public abstract class Log<T> extends Watcher<T> {
 
     @Override
     protected void inspect(T message) {
-        if (enabled()) {
+        if (isEnabled()) {
             log(getMessage(message));
         }
     }
@@ -23,6 +23,6 @@ public abstract class Log<T> extends Watcher<T> {
 
     protected abstract String getMessage(T message);
 
-    protected abstract boolean enabled();
+    protected abstract boolean isEnabled();
 
 }
