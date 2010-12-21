@@ -1,16 +1,16 @@
-package de.jebc.addressbook;
+package de.jebc.adressbook;
 
 import java.sql.ResultSet;
 
 import de.jebc.InPin;
 import de.jebc.OutPin;
 
-public class ExecuteDatabaseQuery {
+public class DatenbankabfrageAusfuehren {
 
-    private InPin<Query> inpin;
+    private InPin<Abfrage> inpin;
     private OutPin<ResultSet> outpin;
 
-    public InPin<Query> Start() {
+    public InPin<Abfrage> Start() {
         return inpin;
     }
     

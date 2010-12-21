@@ -1,20 +1,20 @@
-package de.jebc.addressbook;
+package de.jebc.adressbook;
 
 import java.sql.ResultSet;
 
 import de.jebc.InPin;
 import de.jebc.OutPin;
 
-public class CreateAddress {
+public class AdressobjektErstellen {
 
     private InPin<ResultSet> inpin;
-    private OutPin<Address> outpin;
+    private OutPin<Adresse> outpin;
 
     public InPin<ResultSet> Start() {
         return inpin;
     }
     
-    public OutPin<Address> Result() {
+    public OutPin<Adresse> Result() {
         return outpin;
     }
 }
