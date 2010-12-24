@@ -1,5 +1,7 @@
 package de.jebc.adressbook;
 
+import java.sql.Connection;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,10 +15,11 @@ public class AdresseEinlesen {
 
     Logger log = LoggerFactory.getLogger(AdresseEinlesen.class);
     private AbfrageErstellen abfrageErstellen = new AbfrageErstellen();
-    private DatenbankabfrageAusfuehren abfrageAusfuehren = new DatenbankabfrageAusfuehren();
+    private DatenbankabfrageAusfuehren abfrageAusfuehren;
     private AdressobjektErstellen adresseErstellen = new AdressobjektErstellen();
 
-    public AdresseEinlesen() {
+    public AdresseEinlesen(Connection conn) {
+        abfrageAusfuehren = new DatenbankabfrageAusfuehren(conn);
         logSchluessel.Out().wire(abfrageErstellen.Start());
         abfrageErstellen.Result().wire(logAbfrage.In());
         logAbfrage.Out().wire(abfrageAusfuehren.Start());
