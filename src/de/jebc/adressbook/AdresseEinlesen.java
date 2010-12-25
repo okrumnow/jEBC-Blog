@@ -33,6 +33,10 @@ public class AdresseEinlesen {
     public OutPin<Adresse> Result() {
         return adresseErstellen.Result();
     }
+    
+    public OutPin<Exception> Exception() {
+        return abfrageAusfuehren.Exception();
+    }
 
     private Watcher<Schluessel> logSchluessel = new LogDebug<Schluessel>(log) {
 
