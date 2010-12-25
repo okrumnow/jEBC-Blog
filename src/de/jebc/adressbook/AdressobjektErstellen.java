@@ -2,19 +2,12 @@ package de.jebc.adressbook;
 
 import java.sql.ResultSet;
 
-import de.jebc.InPin;
-import de.jebc.OutPin;
+import de.jebc.Process;
 
-public class AdressobjektErstellen {
+public class AdressobjektErstellen extends Process<ResultSet, Adresse> {
 
-    private InPin<ResultSet> inpin;
-    private OutPin<Adresse> outpin;
-
-    public InPin<ResultSet> Start() {
-        return inpin;
+    @Override
+    protected void process(ResultSet message) {
     }
-    
-    public OutPin<Adresse> Result() {
-        return outpin;
-    }
+
 }

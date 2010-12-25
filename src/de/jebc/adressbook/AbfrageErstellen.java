@@ -1,27 +1,13 @@
 package de.jebc.adressbook;
 
-import de.jebc.InPin;
-import de.jebc.OutPin;
-import de.jebc.OutPinImpl;
+import de.jebc.Process;
 
-public class AbfrageErstellen {
+public class AbfrageErstellen extends Process<Schluessel, Abfrage> {
 
-    private InPin<Schluessel> inpin = new InPin<Schluessel>() {
-
-        @Override
-        public void receive(Schluessel message) {
-            Abfrage result = create(message);
-            outpin.send(result);
-        }
-    };
-    private OutPin<Abfrage> outpin = new OutPinImpl<Abfrage>();
-
-    public InPin<Schluessel> Start() {
-        return inpin;
-    }
-
-    public OutPin<Abfrage> Result() {
-        return outpin;
+    @Override
+    protected void process(Schluessel message) {
+        Abfrage result = create(message);
+        Result().send(result);
     }
 
     private Abfrage create(Schluessel key) {
