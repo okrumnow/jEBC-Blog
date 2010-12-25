@@ -5,6 +5,7 @@ import java.sql.Connection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.jebc.Board;
 import de.jebc.InPin;
 import de.jebc.OutPin;
 import de.jebc.Watcher;

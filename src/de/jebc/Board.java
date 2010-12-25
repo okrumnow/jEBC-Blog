@@ -1,14 +1,7 @@
-package de.jebc.adressbook;
+package de.jebc;
 
-import de.jebc.InPin;
-import de.jebc.OutPin;
-import de.jebc.Watcher;
 
 public class Board {
-
-    public Board() {
-        super();
-    }
 
     protected <T> void watch(OutPin<T> result, InPin<T> start, Watcher<T> with) {
         wire(result, with.In());
