@@ -11,19 +11,29 @@ import de.jebc.Watcher;
 import de.jebc.adressbook.log.LogAbfrage;
 import de.jebc.log.LogDebug;
 
-public class AdresseEinlesen {
+public class AdresseEinlesen extends Board {
 
     Logger log = LoggerFactory.getLogger(AdresseEinlesen.class);
     private AbfrageErstellen abfrageErstellen = new AbfrageErstellen();
     private DatenbankabfrageAusfuehren abfrageAusfuehren;
     private AdressobjektErstellen adresseErstellen = new AdressobjektErstellen();
+    private final Connection conn;
 
     public AdresseEinlesen(Connection conn) {
+        this.conn = conn;
+        createParts();
+        wire();
+    }
+
+    private void wire() {
+        watch(abfrageErstellen.Start(), with(logSchluessel));
+        watch(abfrageErstellen.Result(), abfrageAusfuehren.Start(),
+                with(logAbfrage));
+        wire(abfrageAusfuehren.Result(), adresseErstellen.Start());
+    }
+
+    private void createParts() {
         abfrageAusfuehren = new DatenbankabfrageAusfuehren(conn);
-        logSchluessel.Out().wire(abfrageErstellen.Start());
-        abfrageErstellen.Result().wire(logAbfrage.In());
-        logAbfrage.Out().wire(abfrageAusfuehren.Start());
-        abfrageAusfuehren.Result().wire(adresseErstellen.Start());
     }
 
     public InPin<Schluessel> Start() {
@@ -33,7 +43,7 @@ public class AdresseEinlesen {
     public OutPin<Adresse> Result() {
         return adresseErstellen.Result();
     }
-    
+
     public OutPin<Exception> Exception() {
         return abfrageAusfuehren.Exception();
     }
