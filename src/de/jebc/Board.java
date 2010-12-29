@@ -3,12 +3,12 @@ package de.jebc;
 
 public class Board {
 
-    protected <T> void watch(OutPin<T> out, InPin<T> in, Watcher<T> watcher) {
+    protected <T> void wire(OutPin<T> out, InPin<T> in, Watcher<T> watcher) {
         wire(out, watcher.In());
         wire(watcher.Out(), in);
     }
 
-    protected <T> void watch(InPin<T> in, Watcher<T> watcher) {
+    protected <T> void wire(InPin<T> in, Watcher<T> watcher) {
         wire(watcher.Out(), in);
     }
 
@@ -16,7 +16,7 @@ public class Board {
         out.wire(in);
     }
 
-    protected <T> Watcher<T> with(Watcher<T> watcher) {
+    protected <T> Watcher<T> watcher(Watcher<T> watcher) {
         return watcher;
     }
 

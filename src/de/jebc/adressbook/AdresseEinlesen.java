@@ -27,9 +27,9 @@ public class AdresseEinlesen extends Board {
     }
 
     private void wire() {
-        watch(abfrageErstellen.Start(), with(logSchluessel));
-        watch(abfrageErstellen.Result(), abfrageAusfuehren.Start(),
-                with(logAbfrage));
+        wire(abfrageErstellen.Start(), watcher(logSchluessel));
+        wire(abfrageErstellen.Result(), abfrageAusfuehren.Start(),
+                watcher(logAbfrage));
         wire(abfrageAusfuehren.Result(), adresseErstellen.Start());
     }
 
