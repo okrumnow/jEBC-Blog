@@ -1,4 +1,4 @@
-package de.jebc.adressbook;
+package de.jebc.adressbook.domain;
 
 public class Schluessel {
 

@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import de.jebc.InPin;
+import de.jebc.adressbook.domain.Schluessel;
 
 public class TestAbfrageErstellen {
 
