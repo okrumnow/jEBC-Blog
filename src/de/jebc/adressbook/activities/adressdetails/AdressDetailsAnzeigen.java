@@ -9,6 +9,7 @@ import de.jebc.Board;
 import de.jebc.InPin;
 import de.jebc.OutPin;
 import de.jebc.Watcher;
+import de.jebc.adressbook.data.DatenbankabfrageAusfuehren;
 import de.jebc.adressbook.domain.Abfrage;
 import de.jebc.adressbook.domain.Adresse;
 import de.jebc.adressbook.domain.Schluessel;

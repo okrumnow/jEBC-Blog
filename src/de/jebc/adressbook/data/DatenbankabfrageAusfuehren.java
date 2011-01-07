@@ -1,4 +1,4 @@
-package de.jebc.adressbook.activities.adressdetails;
+package de.jebc.adressbook.data;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
