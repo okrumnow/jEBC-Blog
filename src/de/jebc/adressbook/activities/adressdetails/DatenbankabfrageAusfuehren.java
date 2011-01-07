@@ -1,4 +1,4 @@
-package de.jebc.adressbook;
+package de.jebc.adressbook.activities.adressdetails;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -8,6 +8,7 @@ import java.sql.Statement;
 import de.jebc.Process;
 import de.jebc.OutPin;
 import de.jebc.OutPinImpl;
+import de.jebc.adressbook.domain.Abfrage;
 
 public class DatenbankabfrageAusfuehren extends Process<Abfrage, ResultSet> {
 

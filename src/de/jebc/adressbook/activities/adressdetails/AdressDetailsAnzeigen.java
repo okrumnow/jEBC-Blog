@@ -1,4 +1,4 @@
-package de.jebc.adressbook;
+package de.jebc.adressbook.activities.adressdetails;
 
 import java.sql.Connection;
 
@@ -9,20 +9,21 @@ import de.jebc.Board;
 import de.jebc.InPin;
 import de.jebc.OutPin;
 import de.jebc.Watcher;
+import de.jebc.adressbook.domain.Abfrage;
 import de.jebc.adressbook.domain.Adresse;
 import de.jebc.adressbook.domain.Schluessel;
 import de.jebc.adressbook.log.LogAbfrage;
 import de.jebc.log.LogDebug;
 
-public class AdresseEinlesen extends Board {
+public class AdressDetailsAnzeigen extends Board {
 
-    Logger log = LoggerFactory.getLogger(AdresseEinlesen.class);
+    Logger log = LoggerFactory.getLogger(AdressDetailsAnzeigen.class);
     private AbfrageErstellen abfrageErstellen = new AbfrageErstellen();
     private DatenbankabfrageAusfuehren abfrageAusfuehren;
     private AdressobjektErstellen adresseErstellen = new AdressobjektErstellen();
     private final Connection conn;
 
-    public AdresseEinlesen(Connection conn) {
+    public AdressDetailsAnzeigen(Connection conn) {
         this.conn = conn;
         createParts();
         wire();

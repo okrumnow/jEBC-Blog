@@ -2,7 +2,7 @@ package de.jebc.adressbook.log;
 
 import org.slf4j.Logger;
 
-import de.jebc.adressbook.Abfrage;
+import de.jebc.adressbook.domain.Abfrage;
 import de.jebc.log.LogInfo;
 
 public class LogAbfrage extends LogInfo<Abfrage> {

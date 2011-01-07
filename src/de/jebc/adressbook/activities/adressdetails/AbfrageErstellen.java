@@ -1,6 +1,7 @@
-package de.jebc.adressbook;
+package de.jebc.adressbook.activities.adressdetails;
 
 import de.jebc.Process;
+import de.jebc.adressbook.domain.Abfrage;
 import de.jebc.adressbook.domain.Schluessel;
 
 public class AbfrageErstellen extends Process<Schluessel, Abfrage> {

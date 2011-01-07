@@ -1,10 +1,12 @@
-package de.jebc.adressbook;
+package de.jebc.adressbook.activities.adressdetails;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 import de.jebc.InPin;
+import de.jebc.adressbook.activities.adressdetails.AbfrageErstellen;
+import de.jebc.adressbook.domain.Abfrage;
 import de.jebc.adressbook.domain.Schluessel;
 
 public class TestAbfrageErstellen {

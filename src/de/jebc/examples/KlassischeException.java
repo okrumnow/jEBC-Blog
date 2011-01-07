@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import de.jebc.adressbook.Abfrage;
+import de.jebc.adressbook.domain.Abfrage;
 
 public class KlassischeException {
 

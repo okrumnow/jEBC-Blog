@@ -1,4 +1,4 @@
-package de.jebc.adressbook;
+package de.jebc.adressbook.activities.adressdetails;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import de.jebc.InPin;
 import de.jebc.OutPin;
+import de.jebc.adressbook.activities.adressdetails.AdressobjektErstellen;
 import de.jebc.adressbook.domain.Adresse;
 import de.jebc.adressbook.domain.Schluessel;
 
