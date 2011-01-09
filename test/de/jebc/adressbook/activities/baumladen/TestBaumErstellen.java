@@ -1,6 +1,7 @@
 package de.jebc.adressbook.activities.baumladen;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,14 +11,11 @@ import javax.swing.tree.TreeNode;
 
 import org.junit.Test;
 
-import de.jebc.InPin;
-import de.jebc.OutPin;
+import de.jebc.adressbook.activities.StoringPinsTestclass;
 import de.jebc.adressbook.domain.Name;
 import de.jebc.adressbook.domain.Schluessel;
 
-public class TestBaumErstellen {
-
-    protected TreeModel result;
+public class TestBaumErstellen extends StoringPinsTestclass<TreeModel> {
 
     @Test
     public void testBaumMitEinerAdresse() {
@@ -89,16 +87,6 @@ public class TestBaumErstellen {
         List<Name> result = new ArrayList<Name>();
         result.add(new Name(new Schluessel(1), "Name", "Kategorie"));
         return result;
-    }
-
-    private void storeResultPin(OutPin<TreeModel> pin) {
-        pin.wire(new InPin<TreeModel>() {
-
-            @Override
-            public void receive(TreeModel message) {
-                result = message;
-            }
-        });
     }
 
 }

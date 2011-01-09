@@ -5,14 +5,11 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
-import de.jebc.InPin;
-import de.jebc.OutPin;
+import de.jebc.adressbook.activities.StoringPinsTestclass;
 import de.jebc.adressbook.activities.baumladen.AbfrageErstellen;
 import de.jebc.adressbook.domain.Abfrage;
 
-public class TestAbfrageErstellen {
-
-    protected Abfrage result;
+public class TestAbfrageErstellen extends StoringPinsTestclass<Abfrage> {
 
     @Test
     public void testErstellen() {
@@ -25,16 +22,6 @@ public class TestAbfrageErstellen {
         assertNotNull(result);
         assertEquals("SELECT * FROM Adressen", result.getQuery());
 
-    }
-
-    private void storeResultPin(OutPin<Abfrage> pin) {
-        pin.wire(new InPin<Abfrage>() {
-
-            @Override
-            public void receive(Abfrage message) {
-                result = message;
-            }
-        });
     }
 
 }

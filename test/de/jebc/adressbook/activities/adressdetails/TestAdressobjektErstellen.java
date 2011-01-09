@@ -8,16 +8,12 @@ import java.sql.SQLException;
 
 import org.junit.Test;
 
-import de.jebc.InPin;
-import de.jebc.OutPin;
+import de.jebc.adressbook.activities.StoringPinsTestclass;
 import de.jebc.adressbook.activities.adressdetails.AdressobjektErstellen;
 import de.jebc.adressbook.domain.Adresse;
 import de.jebc.adressbook.domain.Schluessel;
 
-public class TestAdressobjektErstellen {
-
-    protected Adresse result;
-    protected Exception exception;
+public class TestAdressobjektErstellen extends StoringPinsTestclass<Adresse> {
 
     @Test
     public void testAdresseEinlesen() throws Exception {
@@ -50,9 +46,10 @@ public class TestAdressobjektErstellen {
 
         assertNotNull(exception);
     }
-    
+
     @Test
-    public void testLeeresResultsetErzeugtExceptionAmExceptionPin() throws Exception {
+    public void testLeeresResultsetErzeugtExceptionAmExceptionPin()
+            throws Exception {
         ResultSet rs = getEmptyResultSet();
 
         AdressobjektErstellen sut = new AdressobjektErstellen();
@@ -91,23 +88,4 @@ public class TestAdressobjektErstellen {
         return result;
     }
 
-    private void storeExceptionPin(OutPin<Exception> pin) {
-        pin.wire(new InPin<Exception>() {
-    
-            @Override
-            public void receive(Exception message) {
-                exception = message;
-            }
-        });
-    }
-
-    private void storeResultPin(OutPin<Adresse> pin) {
-        pin.wire(new InPin<Adresse>() {
-
-            @Override
-            public void receive(Adresse message) {
-                result = message;
-            }
-        });
-    }
 }

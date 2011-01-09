@@ -4,30 +4,22 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import de.jebc.InPin;
+import de.jebc.adressbook.activities.StoringPinsTestclass;
 import de.jebc.adressbook.activities.adressdetails.AbfrageErstellen;
 import de.jebc.adressbook.domain.Abfrage;
 import de.jebc.adressbook.domain.Schluessel;
 
-public class TestAbfrageErstellen {
-
-    private String result;
+public class TestAbfrageErstellen extends StoringPinsTestclass<Abfrage> {
 
     @Test
     public void ErstelltSelectStatement() {
         Schluessel key = new Schluessel(1);
 
         AbfrageErstellen sut = new AbfrageErstellen();
-        sut.Result().wire(new InPin<Abfrage>() {
-
-            @Override
-            public void receive(Abfrage message) {
-                result = message.getQuery();
-            }
-        });
+        storeResultPin(sut.Result());
 
         sut.Start().receive(key);
 
-        assertEquals("SELECT * FROM Adressen WHERE id = 1", result);
+        assertEquals("SELECT * FROM Adressen WHERE id = 1", result.getQuery());
     }
 }
