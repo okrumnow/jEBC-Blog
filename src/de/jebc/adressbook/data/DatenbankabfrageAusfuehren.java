@@ -5,14 +5,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import de.jebc.Process;
-import de.jebc.OutPin;
-import de.jebc.OutPinImpl;
+import de.jebc.ProcessWithException;
 import de.jebc.adressbook.domain.Abfrage;
 
-public class DatenbankabfrageAusfuehren extends Process<Abfrage, ResultSet> {
-
-    private OutPin<Exception> exceptionPin = new OutPinImpl<Exception>();
+public class DatenbankabfrageAusfuehren extends ProcessWithException<Abfrage, ResultSet> {
 
     private final Connection conn;
 
@@ -36,7 +32,4 @@ public class DatenbankabfrageAusfuehren extends Process<Abfrage, ResultSet> {
         return rs;
     }
 
-    public OutPin<Exception> Exception() {
-        return exceptionPin;
-    }
 }

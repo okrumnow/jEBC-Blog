@@ -5,13 +5,12 @@ import java.sql.SQLException;
 
 import de.jebc.OutPin;
 import de.jebc.OutPinImpl;
-import de.jebc.Process;
+import de.jebc.ProcessWithException;
 import de.jebc.adressbook.domain.Adresse;
 import de.jebc.adressbook.domain.Schluessel;
 
-public class AdressobjektErstellen extends Process<ResultSet, Adresse> {
-
-    private OutPin<Exception> exceptionPin = new OutPinImpl<Exception>();
+public class AdressobjektErstellen extends
+        ProcessWithException<ResultSet, Adresse> {
 
     @Override
     protected void process(ResultSet message) {
@@ -34,10 +33,6 @@ public class AdressobjektErstellen extends Process<ResultSet, Adresse> {
             Exception().send(e);
         }
 
-    }
-
-    public OutPin<Exception> Exception() {
-        return exceptionPin;
     }
 
 }
