@@ -30,10 +30,22 @@ public class TestAdressDetailsAnzeigen extends StoringPinsTestclass<Adresse> {
         assertEquals(new Schluessel(1), result.getKey());
     }
     
-    @Test public void testException() throws Exception {
+    @Test public void testExceptionInQuery() throws Exception {
         Name name = new Name(new Schluessel(1), null, null);
-        Connection conn = setupDatabaseWithError();
+        Connection conn = setupDatabaseWithErrorCausingQueryToFail();
 
+        AdressDetailsAnzeigen sut = new AdressDetailsAnzeigen(conn);
+        storeExceptionPin(sut.Exception());
+        
+        sut.Start().receive(name);
+
+        assertNotNull(exception);
+    }
+    
+    @Test public void testExceptionInResultset() throws Exception {
+        Name name = new Name(new Schluessel(1), null, null);
+        Connection conn = setupDatabaseWithErrorCausingResultsetToFail();
+        
         AdressDetailsAnzeigen sut = new AdressDetailsAnzeigen(conn);
         storeExceptionPin(sut.Exception());
         
@@ -52,13 +64,23 @@ public class TestAdressDetailsAnzeigen extends StoringPinsTestclass<Adresse> {
         return conn;
     }
 
-    private Connection setupDatabaseWithError() throws Exception {
+    private Connection setupDatabaseWithErrorCausingQueryToFail() throws Exception {
         Class.forName("org.sqlite.JDBC");
         final Connection conn = DriverManager
                 .getConnection("jdbc:sqlite::memory:");
         Statement stmt = conn.createStatement();
-        stmt.executeUpdate("CREATE TABLE Adresse (ID INTEGER, Name TEXT, Vorname TEXT, Anschrift TEXT, Telefon TEXT, Kategorie TEXT);");
-        stmt.executeUpdate("INSERT INTO Adresse VALUES (1, 'Name', 'Vorname', 'Anschrift', 'Telefon', 'Privat')");
+        stmt.executeUpdate("CREATE TABLE WrongTableName (ID INTEGER, Name TEXT, Vorname TEXT, Anschrift TEXT, Telefon TEXT, Kategorie TEXT);");
+        stmt.executeUpdate("INSERT INTO WrongTableName VALUES (1, 'Name', 'Vorname', 'Anschrift', 'Telefon', 'Privat')");
+        return conn;
+    }
+
+    private Connection setupDatabaseWithErrorCausingResultsetToFail() throws Exception {
+        Class.forName("org.sqlite.JDBC");
+        final Connection conn = DriverManager
+                .getConnection("jdbc:sqlite::memory:");
+        Statement stmt = conn.createStatement();
+        stmt.executeUpdate("CREATE TABLE Adressen (ID INTEGER, Name TEXT, Vorname TEXT, Anschrift TEXT, Kategorie TEXT);");
+        stmt.executeUpdate("INSERT INTO Adressen VALUES (1, 'Name', 'Vorname', 'Anschrift', 'Privat')");
         return conn;
     }
 

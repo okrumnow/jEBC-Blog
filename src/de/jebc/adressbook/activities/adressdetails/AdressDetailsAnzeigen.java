@@ -5,7 +5,7 @@ import java.sql.Connection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.jebc.Board;
+import de.jebc.BoardWithException;
 import de.jebc.InPin;
 import de.jebc.OutPin;
 import de.jebc.Watcher;
@@ -18,7 +18,7 @@ import de.jebc.adressbook.domain.Schluessel;
 import de.jebc.adressbook.log.LogAbfrage;
 import de.jebc.log.LogDebug;
 
-public class AdressDetailsAnzeigen extends Board {
+public class AdressDetailsAnzeigen extends BoardWithException {
 
     Logger log = LoggerFactory.getLogger(AdressDetailsAnzeigen.class);
     private AbfrageErstellen abfrageErstellen;
@@ -39,6 +39,9 @@ public class AdressDetailsAnzeigen extends Board {
         wire(abfrageErstellen.Result(), abfrageAusfuehren.Start(),
                 watcher(logAbfrage));
         wire(abfrageAusfuehren.Result(), adresseErstellen.Start());
+
+        handle(abfrageAusfuehren.Exception());
+        handle(adresseErstellen.Exception());
     }
 
     private void createParts() {
@@ -54,10 +57,6 @@ public class AdressDetailsAnzeigen extends Board {
 
     public OutPin<Adresse> Result() {
         return adresseErstellen.Result();
-    }
-
-    public OutPin<Exception> Exception() {
-        return abfrageAusfuehren.Exception();
     }
 
     private Watcher<Schluessel> logSchluessel = new LogDebug<Schluessel>(log) {

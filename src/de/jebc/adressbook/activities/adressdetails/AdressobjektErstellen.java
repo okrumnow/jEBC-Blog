@@ -3,8 +3,6 @@ package de.jebc.adressbook.activities.adressdetails;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import de.jebc.OutPin;
-import de.jebc.OutPinImpl;
 import de.jebc.ProcessWithException;
 import de.jebc.adressbook.domain.Adresse;
 import de.jebc.adressbook.domain.Schluessel;
