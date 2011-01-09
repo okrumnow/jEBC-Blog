@@ -30,6 +30,18 @@ public class TestAdressDetailsAnzeigen extends StoringPinsTestclass<Adresse> {
         assertEquals(new Schluessel(1), result.getKey());
     }
     
+    @Test public void testException() throws Exception {
+        Name name = new Name(new Schluessel(1), null, null);
+        Connection conn = setupDatabaseWithError();
+
+        AdressDetailsAnzeigen sut = new AdressDetailsAnzeigen(conn);
+        storeExceptionPin(sut.Exception());
+        
+        sut.Start().receive(name);
+
+        assertNotNull(exception);
+    }
+    
     private Connection setupDatabase() throws Exception {
         Class.forName("org.sqlite.JDBC");
         final Connection conn = DriverManager
@@ -37,6 +49,16 @@ public class TestAdressDetailsAnzeigen extends StoringPinsTestclass<Adresse> {
         Statement stmt = conn.createStatement();
         stmt.executeUpdate("CREATE TABLE Adressen (ID INTEGER, Name TEXT, Vorname TEXT, Anschrift TEXT, Telefon TEXT, Kategorie TEXT);");
         stmt.executeUpdate("INSERT INTO Adressen VALUES (1, 'Name', 'Vorname', 'Anschrift', 'Telefon', 'Privat')");
+        return conn;
+    }
+
+    private Connection setupDatabaseWithError() throws Exception {
+        Class.forName("org.sqlite.JDBC");
+        final Connection conn = DriverManager
+                .getConnection("jdbc:sqlite::memory:");
+        Statement stmt = conn.createStatement();
+        stmt.executeUpdate("CREATE TABLE Adresse (ID INTEGER, Name TEXT, Vorname TEXT, Anschrift TEXT, Telefon TEXT, Kategorie TEXT);");
+        stmt.executeUpdate("INSERT INTO Adresse VALUES (1, 'Name', 'Vorname', 'Anschrift', 'Telefon', 'Privat')");
         return conn;
     }
 
