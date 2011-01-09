@@ -9,9 +9,11 @@ import de.jebc.Board;
 import de.jebc.InPin;
 import de.jebc.OutPin;
 import de.jebc.Watcher;
+import de.jebc.adressbook.activities.SelektierteAdresseBestimmen;
 import de.jebc.adressbook.data.DatenbankabfrageAusfuehren;
 import de.jebc.adressbook.domain.Abfrage;
 import de.jebc.adressbook.domain.Adresse;
+import de.jebc.adressbook.domain.Name;
 import de.jebc.adressbook.domain.Schluessel;
 import de.jebc.adressbook.log.LogAbfrage;
 import de.jebc.log.LogDebug;
@@ -19,9 +21,10 @@ import de.jebc.log.LogDebug;
 public class AdressDetailsAnzeigen extends Board {
 
     Logger log = LoggerFactory.getLogger(AdressDetailsAnzeigen.class);
-    private AbfrageErstellen abfrageErstellen = new AbfrageErstellen();
+    private AbfrageErstellen abfrageErstellen;
     private DatenbankabfrageAusfuehren abfrageAusfuehren;
-    private AdressobjektErstellen adresseErstellen = new AdressobjektErstellen();
+    private AdressobjektErstellen adresseErstellen;
+    private SelektierteAdresseBestimmen adresseBestimmen;
     private final Connection conn;
 
     public AdressDetailsAnzeigen(Connection conn) {
@@ -31,18 +34,22 @@ public class AdressDetailsAnzeigen extends Board {
     }
 
     private void wire() {
-        wire(abfrageErstellen.Start(), watcher(logSchluessel));
+        wire(adresseBestimmen.Result(), abfrageErstellen.Start(),
+                watcher(logSchluessel));
         wire(abfrageErstellen.Result(), abfrageAusfuehren.Start(),
                 watcher(logAbfrage));
         wire(abfrageAusfuehren.Result(), adresseErstellen.Start());
     }
 
     private void createParts() {
+        adresseBestimmen = new SelektierteAdresseBestimmen();
+        abfrageErstellen = new AbfrageErstellen();
         abfrageAusfuehren = new DatenbankabfrageAusfuehren(conn);
+        adresseErstellen = new AdressobjektErstellen();
     }
 
-    public InPin<Schluessel> Start() {
-        return logSchluessel.In();
+    public InPin<Name> Start() {
+        return adresseBestimmen.Start();
     }
 
     public OutPin<Adresse> Result() {
