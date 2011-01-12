@@ -16,8 +16,10 @@ public class NamenErstellen extends ProcessWithException<ResultSet, List<Name>> 
         List<Name> result = new ArrayList<Name>();
         try {
             while (message.next()) {
-                Name name = new Name(new Schluessel(message.getInt("ID")), "",
-                        "");
+                Name name = new Name(new Schluessel(message.getInt("ID")),
+                        String.format("%1$s, %2$s", message.getString("Name"),
+                                message.getString("Vorname")),
+                        message.getString("Kategorie"));
                 result.add(name);
             }
             Result().send(result);

@@ -28,6 +28,7 @@ public class TestNamenErstellen extends StoringPinsTestclass<List<Name>> {
 
         assertNotNull(result);
         assertEquals(2, result.size());
+        assertEquals("Name, Vorname", result.get(0).getName());
     }
 
     @Test
