@@ -15,8 +15,8 @@ import de.jebc.adressbook.domain.Abfrage;
 import de.jebc.adressbook.domain.Adresse;
 import de.jebc.adressbook.domain.Name;
 import de.jebc.adressbook.domain.Schluessel;
-import de.jebc.adressbook.log.LogAbfrage;
 import de.jebc.log.LogDebug;
+import de.jebc.log.LogInfo;
 
 public class AdressDetailsAnzeigen extends BoardWithException {
 
@@ -66,6 +66,13 @@ public class AdressDetailsAnzeigen extends BoardWithException {
             return "erstelle Abfrage für " + message.getId();
         }
     };
-    private Watcher<Abfrage> logAbfrage = new LogAbfrage(log);
+    private Watcher<Abfrage> logAbfrage = new LogInfo<Abfrage>(log) {
+
+        @Override
+        protected String getMessage(Abfrage message) {
+            return "Abfrage ist: " + message.getQuery();
+        }
+
+    };
 
 }
