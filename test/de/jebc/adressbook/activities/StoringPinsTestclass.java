@@ -7,6 +7,8 @@ public class StoringPinsTestclass<T> {
 
     protected T result;
     protected Exception exception;
+    protected boolean resultCalled;
+    protected boolean exceptionCalled;
 
     public StoringPinsTestclass() {
         super();
@@ -18,6 +20,7 @@ public class StoringPinsTestclass<T> {
             @Override
             public void receive(T message) {
                 result = message;
+                resultCalled = true;
             }
         });
     }
@@ -28,6 +31,7 @@ public class StoringPinsTestclass<T> {
             @Override
             public void receive(Exception message) {
                 exception = message;
+                exceptionCalled = true;
             }
         });
     }
