@@ -19,6 +19,10 @@ public class Adresse {
         this.kategorie = kategorie;
     }
 
+    public Adresse() {
+        this(new Schluessel(0), "", "", "", "", "");
+    }
+
     public String getKategorie() {
         return kategorie;
     }
