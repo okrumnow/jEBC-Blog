@@ -11,7 +11,7 @@ public class TestAbfrageErstellen {
     private String result;
 
     @Test
-    public void ErstelltSelectStatement() {
+    public void ErstelltSelectStatement() throws Exception {
         Schluessel key = new Schluessel(1);
 
         AbfrageErstellen sut = new AbfrageErstellen();

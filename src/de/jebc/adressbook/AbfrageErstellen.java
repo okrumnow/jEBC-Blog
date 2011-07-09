@@ -5,7 +5,7 @@ import de.jebc.Process;
 public class AbfrageErstellen extends Process<Schluessel, Abfrage> {
 
     @Override
-    protected void process(Schluessel message) {
+    protected void process(Schluessel message) throws Exception {
         Abfrage result = create(message);
         Result().send(result);
     }

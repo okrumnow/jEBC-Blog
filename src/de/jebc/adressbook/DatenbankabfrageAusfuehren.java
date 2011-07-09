@@ -20,7 +20,7 @@ public class DatenbankabfrageAusfuehren extends Process<Abfrage, ResultSet> {
     }
 
     @Override
-    protected void process(Abfrage message) {
+    protected void process(Abfrage message) throws Exception {
         try {
             ResultSet rs = fuehreAbfrageAus(message);
             Result().send(rs);
