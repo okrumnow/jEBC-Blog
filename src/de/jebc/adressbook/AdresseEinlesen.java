@@ -45,15 +45,11 @@ public class AdresseEinlesen extends Board {
         return adresseErstellen.Result();
     }
 
-    public OutPin<Exception> Exception() {
-        return abfrageAusfuehren.Exception();
-    }
-
     private Watcher<Schluessel> logSchluessel = new LogDebug<Schluessel>(log) {
 
         @Override
         protected String getMessage(Schluessel message) {
-            return "erstelle Abfrage fÃ¼r " + message.getId();
+            return "erstelle Abfrage für " + message.getId();
         }
     };
     private Watcher<Abfrage> logAbfrage = new LogAbfrage(log);
