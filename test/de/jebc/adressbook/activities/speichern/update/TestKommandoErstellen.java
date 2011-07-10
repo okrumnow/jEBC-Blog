@@ -12,7 +12,7 @@ import de.jebc.adressbook.domain.Schluessel;
 public class TestKommandoErstellen extends StoringPinsTestclass<Abfrage> {
 
     @Test
-    public void testErstellen() {
+    public void testErstellen() throws Exception {
         Adresse daten = new Adresse(new Schluessel(1), "Name", "Vorname",
                 "Anschrift", "Telefon", "Kategorie");
 

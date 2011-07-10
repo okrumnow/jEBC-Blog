@@ -19,7 +19,7 @@ public class EinfuegenKommandoAusfuehren extends
     }
 
     @Override
-    protected void process(Abfrage message) {
+    protected void process(Abfrage message) throws Exception {
         try {
             int identity = fuehreAbfrageAus(message);
             Schluessel result = new Schluessel(identity);

@@ -10,7 +10,7 @@ import de.jebc.adressbook.domain.Adresse;
 public class TestLeereAdresseErzeugen extends StoringPinsTestclass<Adresse> {
 
     @Test
-    public void testErzeugen() {
+    public void testErzeugen() throws Exception {
 
         LeereAdresseErzeugen sut = new LeereAdresseErzeugen();
         storeResultPin(sut.Result());

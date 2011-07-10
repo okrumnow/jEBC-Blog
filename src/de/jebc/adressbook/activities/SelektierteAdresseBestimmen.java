@@ -7,7 +7,7 @@ import de.jebc.adressbook.domain.Schluessel;
 public class SelektierteAdresseBestimmen extends Process<Name, Schluessel> {
 
     @Override
-    protected void process(Name message) {
+    protected void process(Name message) throws Exception {
         Result().send(message.getSchluessel());
     }
 

@@ -12,7 +12,7 @@ import de.jebc.adressbook.domain.Schluessel;
 public class NamenErstellen extends ProcessWithException<ResultSet, List<Name>> {
 
     @Override
-    protected void process(ResultSet message) {
+    protected void process(ResultSet message) throws Exception {
         try {
             List<Name> result = createNames(message);
             Result().send(result);

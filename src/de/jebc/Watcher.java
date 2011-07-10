@@ -7,7 +7,7 @@ public abstract class Watcher<T> {
     private InPin<T> in = new InPin<T>() {
 
         @Override
-        public void receive(T message) {
+        public void receive(T message) throws Exception {
             inspect(message);
             out.send(message);
         }

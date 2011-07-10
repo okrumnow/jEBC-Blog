@@ -10,7 +10,7 @@ public class OutPinImpl<T> implements OutPin<T> {
     }
 
     @Override
-    public void send(T message) {
+    public void send(T message) throws Exception {
         inPin.receive(message);
     }
 

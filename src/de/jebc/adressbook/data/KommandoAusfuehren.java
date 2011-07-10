@@ -16,7 +16,7 @@ public class KommandoAusfuehren extends ProcessWithException<Abfrage, Integer> {
     }
     
     @Override
-    protected void process(Abfrage message) {
+    protected void process(Abfrage message) throws Exception {
         try {
             int result = ausfuehren(message);
             Result().send(result);

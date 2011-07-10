@@ -9,7 +9,7 @@ public abstract class Join<TInput1, TInput2, TOutput> {
     private InPin<TInput1> inPin1 = new InPin<TInput1>() {
 
         @Override
-        public void receive(TInput1 message) {
+        public void receive(TInput1 message) throws Exception {
             data1 = message;
             data1present = true;
             joinIfComplete();
@@ -18,7 +18,7 @@ public abstract class Join<TInput1, TInput2, TOutput> {
     private InPin<TInput2> inPin2 = new InPin<TInput2>() {
 
         @Override
-        public void receive(TInput2 message) {
+        public void receive(TInput2 message) throws Exception {
             data2 = message;
             data2present = true;
             joinIfComplete();
@@ -38,7 +38,7 @@ public abstract class Join<TInput1, TInput2, TOutput> {
         return outPin;
     }
 
-    protected void joinIfComplete() {
+    protected void joinIfComplete() throws Exception {
         if (data1present && data2present) {
             TOutput result = join(data1, data2);
             Out().send(result);

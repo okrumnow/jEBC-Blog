@@ -7,7 +7,7 @@ import de.jebc.adressbook.domain.Adresse;
 public class EinfuegenKommandoErstellen extends Process<Adresse, Abfrage> {
 
     @Override
-    protected void process(Adresse message) {
+    protected void process(Adresse message) throws Exception {
         String command = String.format(
                 "INSERT INTO Adressen (Name, Vorname, Anschrift, Telefon, Kategorie) "
                         + "VALUES ('%1$s', '%2$s', '%3$s', '%4$s', '%5$s')",

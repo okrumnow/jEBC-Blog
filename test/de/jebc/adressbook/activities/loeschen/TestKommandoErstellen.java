@@ -11,7 +11,7 @@ import de.jebc.adressbook.domain.Schluessel;
 
 public class TestKommandoErstellen extends StoringPinsTestclass<Abfrage> {
 
-    @Test public void testErstellen() {
+    @Test public void testErstellen() throws Exception {
         
         KommandoErstellen sut = new KommandoErstellen();
         storeResultPin(sut.Result());

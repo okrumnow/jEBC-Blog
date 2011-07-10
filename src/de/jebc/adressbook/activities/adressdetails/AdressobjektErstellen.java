@@ -11,7 +11,7 @@ public class AdressobjektErstellen extends
         ProcessWithException<ResultSet, Adresse> {
 
     @Override
-    protected void process(ResultSet message) {
+    protected void process(ResultSet message) throws Exception {
         try {
             if (message.next()) {
                 int id = message.getInt("ID");

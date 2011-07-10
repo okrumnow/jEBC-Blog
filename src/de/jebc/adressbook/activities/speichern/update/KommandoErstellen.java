@@ -7,7 +7,7 @@ import de.jebc.adressbook.domain.Adresse;
 public class KommandoErstellen extends Process<Adresse, Abfrage> {
 
     @Override
-    protected void process(Adresse message) {
+    protected void process(Adresse message) throws Exception {
         String query = String
                 .format("UPDATE Adressen SET Name = '%1$s', Vorname = '%2$s', Anschrift = '%3$s', Telefon = '%4$s', Kategorie = '%5$s' WHERE ID = %6$d",
                         message.getName(), message.getVorname(),

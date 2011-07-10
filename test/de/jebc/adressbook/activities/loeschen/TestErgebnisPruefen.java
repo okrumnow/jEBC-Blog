@@ -8,7 +8,7 @@ import de.jebc.adressbook.activities.StoringPinsTestclass;
 
 public class TestErgebnisPruefen extends StoringPinsTestclass<Void> {
 
-    @Test public void testErgebnis1Erwartet() {
+    @Test public void testErgebnis1Erwartet() throws Exception {
         
         Integer ergebnis = new Integer(1);
         ErgebnisPruefen sut = new ErgebnisPruefen();
@@ -19,7 +19,7 @@ public class TestErgebnisPruefen extends StoringPinsTestclass<Void> {
         assertTrue(resultCalled);
     }
 
-    @Test public void testErgebnis2WirftException() {
+    @Test public void testErgebnis2WirftException() throws Exception {
         
         Integer ergebnis = new Integer(2);
         ErgebnisPruefen sut = new ErgebnisPruefen();

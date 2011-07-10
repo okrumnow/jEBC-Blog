@@ -5,7 +5,7 @@ import de.jebc.ProcessWithException;
 public class ErgebnisPruefen extends ProcessWithException<Integer, Void> {
 
     @Override
-    protected void process(Integer message) {
+    protected void process(Integer message) throws Exception {
         if (message == 1) {
             Result().send(null);
         } else {

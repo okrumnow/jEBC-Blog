@@ -18,7 +18,7 @@ import de.jebc.adressbook.domain.Schluessel;
 public class TestBaumErstellen extends StoringPinsTestclass<TreeModel> {
 
     @Test
-    public void testBaumMitEinerAdresse() {
+    public void testBaumMitEinerAdresse() throws Exception {
 
         List<Name> input = buildListWithOneAddress();
 
@@ -35,7 +35,7 @@ public class TestBaumErstellen extends StoringPinsTestclass<TreeModel> {
     }
 
     @Test
-    public void testBaumMitZweiAdressenDerselbenKategorie() {
+    public void testBaumMitZweiAdressenDerselbenKategorie() throws Exception {
 
         List<Name> input = buildListWithTwoAddressesInSameCategory();
 
@@ -52,7 +52,7 @@ public class TestBaumErstellen extends StoringPinsTestclass<TreeModel> {
     }
 
     @Test
-    public void testBaumMitJeZweiAdressenInZweiKategorien() {
+    public void testBaumMitJeZweiAdressenInZweiKategorien() throws Exception {
 
         List<Name> input = buildListWithTwoAddressesEachInTwoCategories();
 

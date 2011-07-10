@@ -17,7 +17,7 @@ public class DatenbankabfrageAusfuehren extends ProcessWithException<Abfrage, Re
     }
 
     @Override
-    protected void process(Abfrage message) {
+    protected void process(Abfrage message) throws Exception {
         try {
             ResultSet rs = fuehreAbfrageAus(message);
             Result().send(rs);

@@ -17,7 +17,7 @@ public class BaumErstellen extends Process<List<Name>, TreeModel> {
     private DefaultMutableTreeNode root;
 
     @Override
-    protected void process(List<Name> message) {
+    protected void process(List<Name> message) throws Exception {
         TreeModel result = createTreeModel(message);
         Result().send(result);
     }

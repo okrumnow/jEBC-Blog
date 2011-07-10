@@ -12,7 +12,7 @@ import de.jebc.adressbook.domain.Abfrage;
 public class TestAbfrageErstellen extends StoringPinsTestclass<Abfrage> {
 
     @Test
-    public void testErstellen() {
+    public void testErstellen() throws Exception {
 
         AbfrageErstellen sut = new AbfrageErstellen();
         storeResultPin(sut.Result());

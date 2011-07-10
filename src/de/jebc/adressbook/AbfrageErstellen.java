@@ -1,4 +1,4 @@
-package de.jebc.adressbook.activities.adressdetails;
+package de.jebc.adressbook;
 
 import de.jebc.Process;
 import de.jebc.adressbook.domain.Abfrage;

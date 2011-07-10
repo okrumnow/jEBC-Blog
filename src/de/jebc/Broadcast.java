@@ -5,7 +5,7 @@ public class Broadcast<T> {
     private InPin<T> inPin = new InPin<T>() {
 
         @Override
-        public void receive(T message) {
+        public void receive(T message) throws Exception {
             Out().send(message);
         }
     };

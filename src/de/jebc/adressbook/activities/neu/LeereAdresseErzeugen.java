@@ -6,7 +6,7 @@ import de.jebc.adressbook.domain.Adresse;
 public class LeereAdresseErzeugen extends Process<Void, Adresse> {
 
     @Override
-    protected void process(Void message) {
+    protected void process(Void message) throws Exception {
         Result().send(new Adresse());
     }
 
